@@ -1,40 +1,16 @@
-var preTag = document.getElementById("myPreTag");
 
-// Create a copy button element
-var copyButton = document.createElement("span");
-copyButton.innerText = "Copy";
-copyButton.classList.add("copy-button");
-
-// Append the copy button to the <pre> tag
-preTag.appendChild(copyButton);
-
-// Add click event listener to the copy button
-copyButton.addEventListener("click", () => {
-  // Hide the copy button temporarily
-  copyButton.style.display = "none";
-
-  // Create a range and select the text inside the <pre> tag
-  var range = document.createRange();
-  range.selectNode(preTag);
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(range);
-
-  try {
-    // Copy the selected text to the clipboard
-    document.execCommand("copy");
-
-    // Alert the user that the text has been copied
-    copyButton.innerText = "Copied!";
-    setTimeout(function () {
-      copyButton.innerText = "Copy";
-    }, 2000);
-  } catch (err) {
-    console.error("Unable to copy text:", err);
-  } finally {
-    // Show the copy button again
-    copyButton.style.display = "inline";
-
-    // Deselect the text
-    window.getSelection().removeAllRanges();
-  }
+document.querySelectorAll(".myPreTag").forEach((item, index) => {
+  item.setAttribute("data-value", "Copy");
+  item.addEventListener("click", async (event) => {
+    if (!navigator.clipboard) {
+      // Clipboard API not available
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(event.target.innerText);
+      item.setAttribute("data-value", "Copied");
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  });
 });
