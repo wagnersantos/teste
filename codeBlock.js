@@ -1,7 +1,7 @@
-const preTag = document.getElementById("myPreTag");
+var preTag = document.getElementById("myPreTag");
 
 // Create a copy button element
-const copyButton = document.createElement("span");
+var copyButton = document.createElement("span");
 copyButton.innerText = "Copy";
 copyButton.classList.add("copy-button");
 
@@ -14,7 +14,7 @@ copyButton.addEventListener("click", () => {
   copyButton.style.display = "none";
 
   // Create a range and select the text inside the <pre> tag
-  const range = document.createRange();
+  var range = document.createRange();
   range.selectNode(preTag);
   window.getSelection().removeAllRanges();
   window.getSelection().addRange(range);
