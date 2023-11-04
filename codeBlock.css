@@ -23,15 +23,14 @@ pre {
   content: attr(data-value);
   color: #fff;
   background: #a1a1a1;
-  cursor: pointer;
   padding: 3px 10px;
   position: absolute;
   top: 0;
   right: 0;
-  cursor: pointer;
   padding: 2px 7px;
 }
 
 .myPreTag:hover:after {
+  cursor: pointer;
   opacity: 0.5;
 }
