@@ -1,5 +1,3 @@
-console.log("asd");
-
 const preTag = document.getElementById("myPreTag");
 
 // Create a copy button element
