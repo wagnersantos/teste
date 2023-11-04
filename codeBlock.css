@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  white-space: normal;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+li {
+  padding: 8px 0;
+}
+
+pre {
+  position: relative;
+  background: #d3d6db;
+  padding: 16px;
+  word-wrap: break-word;
+  border: 1px solid #e6e7e9;
+  width: calc(100% - 32px);
+  margin-top: 4px;
+}
+
+.myPreTag::after {
+  content: attr(data-value);
+  color: #fff;
+  background: #a1a1a1;
+  cursor: pointer;
+  padding: 3px 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  padding: 2px 7px;
+}
+
+.myPreTag:hover:after {
+  opacity: 0.5;
+}
