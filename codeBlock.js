@@ -1,3 +1,7 @@
+document.querySelectorAll("iframe").forEach((item, index) => {
+   item.setAttribute("allow", "clipboard-write clipboard-read");
+});
+
 document.querySelectorAll(".myPreTag").forEach((item, index) => {
   item.setAttribute("data-value", "Copy");
   item.addEventListener("click", async (event) => {
@@ -9,8 +13,6 @@ document.querySelectorAll(".myPreTag").forEach((item, index) => {
       await navigator.clipboard.writeText(event.target.innerText);
       item.setAttribute("data-value", "Copied");
     } catch (err) {
-      item.execCommand('copy');
-      item.setAttribute("data-value", "Copied");
       console.error("Failed to copy!", err);
     }
   });
