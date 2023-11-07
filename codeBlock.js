@@ -16,6 +16,7 @@ document.querySelectorAll(".myPreTag").forEach((item, index) => {
       window.getSelection().addRange(range); 
       document.execCommand("copy");
       window.getSelection().removeAllRanges();
+      item.setAttribute("data-value", "Copied");
     }
   });
 });
