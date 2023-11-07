@@ -1,5 +1,6 @@
 document.querySelectorAll(".myPreTag").forEach((item, index) => {
   item.setAttribute("data-value", "Copy");
+  item.setAttribute("id", "id"+index);
   item.addEventListener("click", async (event) => {
     if (!navigator.clipboard) {
       // Clipboard API not available
@@ -9,7 +10,12 @@ document.querySelectorAll(".myPreTag").forEach((item, index) => {
       await navigator.clipboard.writeText(event.target.innerText);
       item.setAttribute("data-value", "Copied");
     } catch (err) {
-      console.error("Failed to copy!", err);
+      var range = document.createRange();
+      range.selectNode(document.getElementById("id"+index));
+      window.getSelection().removeAllRanges(); // clear current selection
+      window.getSelection().addRange(range); // to select text
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();// to deselect
     }
   });
 });
