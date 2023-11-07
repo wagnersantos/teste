@@ -1,7 +1,3 @@
-document.querySelectorAll("iframe").forEach((item, index) => {
-   item.setAttribute("allow", "clipboard-write clipboard-read");
-});
-
 document.querySelectorAll(".myPreTag").forEach((item, index) => {
   item.setAttribute("data-value", "Copy");
   item.addEventListener("click", async (event) => {
